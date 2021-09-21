@@ -248,7 +248,7 @@ namespace TimedMathQuiz
             this.sum.Location = new System.Drawing.Point(337, 103);
             this.sum.Name = "sum";
             this.sum.Size = new System.Drawing.Size(100, 35);
-            this.sum.TabIndex = 6;
+            this.sum.TabIndex = 2;
             this.sum.ValueChanged += new System.EventHandler(this.Sum_ValueChanged);
             // 
             // difference
@@ -257,7 +257,7 @@ namespace TimedMathQuiz
             this.difference.Location = new System.Drawing.Point(337, 153);
             this.difference.Name = "difference";
             this.difference.Size = new System.Drawing.Size(100, 35);
-            this.difference.TabIndex = 11;
+            this.difference.TabIndex = 3;
             // 
             // product
             // 
@@ -265,7 +265,7 @@ namespace TimedMathQuiz
             this.product.Location = new System.Drawing.Point(337, 203);
             this.product.Name = "product";
             this.product.Size = new System.Drawing.Size(100, 35);
-            this.product.TabIndex = 16;
+            this.product.TabIndex = 4;
             // 
             // quotient
             // 
@@ -273,15 +273,17 @@ namespace TimedMathQuiz
             this.quotient.Location = new System.Drawing.Point(337, 253);
             this.quotient.Name = "quotient";
             this.quotient.Size = new System.Drawing.Size(100, 35);
-            this.quotient.TabIndex = 21;
+            this.quotient.TabIndex = 5;
             // 
             // startButton
             // 
-            this.startButton.Location = new System.Drawing.Point(224, 312);
+            this.startButton.AutoSize = true;
+            this.startButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startButton.Location = new System.Drawing.Point(171, 297);
             this.startButton.Name = "startButton";
-            this.startButton.Size = new System.Drawing.Size(75, 23);
-            this.startButton.TabIndex = 22;
-            this.startButton.Text = "button1";
+            this.startButton.Size = new System.Drawing.Size(131, 34);
+            this.startButton.TabIndex = 1;
+            this.startButton.Text = "Start the Quiz";
             this.startButton.UseVisualStyleBackColor = true;
             // 
             // Form1
@@ -322,6 +324,7 @@ namespace TimedMathQuiz
             ((System.ComponentModel.ISupportInitialize)(this.product)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.quotient)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

@@ -12,6 +12,7 @@ namespace TimedMathQuiz
 {
     public partial class Form1 : Form
     {
+        Random random = new Random();
         public Form1()
         {
             InitializeComponent();
@@ -19,9 +20,17 @@ namespace TimedMathQuiz
 
         private void Form1_Load(object sender, EventArgs e)
         {
+           
 
         }
+        private void startButton_Click(object sender, EventArgs e)
+        {
+ Random random = new Random();
+            int leftInt = random.Next(51);
+            int rightInt = random.Next(51);
 
+            plusLeftLabel.Text = leftInt.ToString();
+        }
         private void plusLeftLabel_Click(object sender, EventArgs e)
         {
 
