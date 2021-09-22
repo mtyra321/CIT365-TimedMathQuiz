@@ -22,6 +22,17 @@ namespace TimedMathQuiz
 
         public void StartTheQuiz()
         {
+            DateTime date = DateTime.Now;
+          //  string dateString = " " + date.Day + " " + date.Month.ToString()+ " "+ date.Year;
+           // string.Format("{0: dd MMMM, yyyy}", date);// September 22, 2021
+
+            dateLabel.Text = string.Format("{0: dd MMMM, yyyy}", date);
+
+            sum.Value = 0;
+            difference.Value = 0;
+            product.Value = 0;
+            quotient.Value = 0;
+
             timeLabel.BackColor = Color.FromArgb(255, 255, 255);
             sum.BackColor = Color.FromArgb(255, 255, 255);
             difference.BackColor = Color.FromArgb(255, 255, 255);
@@ -53,7 +64,7 @@ namespace TimedMathQuiz
 
 
             leftInt4 = random.Next(12);
-            rightInt4 = random.Next(12);
+            rightInt4 = random.Next(12) + 1;
 
             divLeftLabel.Text = leftInt4.ToString();
             divRightLabel.Text = rightInt4.ToString();
@@ -114,7 +125,7 @@ namespace TimedMathQuiz
                 // by updating the Time Left label.
                 timeLeft = timeLeft - 1;
                 timeLabel.Text = timeLeft + " seconds";
-                if(timeLeft < 6)
+                if(timeLeft < 6 && timeLeft > 0)
                 {
                     timeLabel.BackColor = Color.FromArgb(255, 0, 0);
                 }
@@ -123,30 +134,47 @@ namespace TimedMathQuiz
             {
                 // If the user ran out of time, stop the timer, show
                 // a MessageBox, and fill in the answers.
+                
                 timer1.Stop();
                 timeLabel.Text = "Time's up!";
-                MessageBox.Show("You didn't finish in time. You only got: "+checkAnswers()+" answers right", "Sorry!");
-                //sum.Value = addend1 + addend2;
+                int answersBefore = checkAnswers();
+                if (quotient.BackColor != Color.FromArgb(0, 255, 0))
+                {                quotient.Value= leftInt4 / rightInt4;
+
+                    quotient.BackColor = Color.FromArgb(255, 0, 0);
+                }
+                if (sum.BackColor != Color.FromArgb(0, 255, 0))
+                {                sum.Value=leftInt + rightInt;
+
+                    sum.BackColor = Color.FromArgb(255, 0, 0);
+                }
+                if (difference.BackColor != Color.FromArgb(0, 255, 0))
+                {                difference.Value=leftInt2 - rightInt2;
+
+                    difference.BackColor = Color.FromArgb(255, 0, 0);
+                }
+                if (product.BackColor != Color.FromArgb(0, 255, 0))
+                {                product.Value=leftInt3* rightInt3;
+
+                    product.BackColor = Color.FromArgb(255, 0, 0);
+                }
+                MessageBox.Show("You didn't finish in time. You only got: "+answersBefore+" answers right", "Sorry!");
 
                 startButton.Enabled = true;
             }
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+        private void answer_Enter(object sender, EventArgs e)
+        {
+            NumericUpDown answerBox = sender as NumericUpDown;
+
+            if (answerBox != null)
+            {
+                int lengthOfAnswer = answerBox.Value.ToString().Length;
+                answerBox.Select(0, lengthOfAnswer);
+            }
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
            
