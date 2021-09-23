@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Media;
+
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +15,7 @@ namespace TimedMathQuiz
     public partial class Form1 : Form
     {
         int leftInt, rightInt, leftInt2, rightInt2, leftInt3, rightInt3, leftInt4, rightInt4;
+        bool sumRight, diffRight, proRight, quoRight = false;
         Random random = new Random();
         public Form1()
         {
@@ -77,23 +80,46 @@ namespace TimedMathQuiz
 
         }
         public int checkAnswers()
-        {
+        {     
+            SoundPlayer simpleSound = new SoundPlayer(@"c:\Windows\Media\chimes.wav");
+
             int totalRight = 0;
             if (leftInt + rightInt == sum.Value)
             {
                 sum.BackColor = Color.FromArgb(0, 255, 0);
+                if (sumRight == false)
+                {
+                    simpleSound.Play();
+                    sumRight = true;
+                }
+                
                 totalRight++;
             }
             if (leftInt2 - rightInt2 == difference.Value) { 
                 difference.BackColor = Color.FromArgb(0, 255, 0);
+                if (diffRight == false)
+                {
+                    simpleSound.Play();
+                    diffRight = true;
+                }
                 totalRight++;
             }
             if (leftInt3* rightInt3 == product.Value){
                 product.BackColor = Color.FromArgb(0, 255, 0);
+                if (proRight == false)
+                {
+                    simpleSound.Play();
+                    proRight = true;
+                }
                 totalRight++;
             }
             if (leftInt4 / rightInt4 == quotient.Value){
                 quotient.BackColor = Color.FromArgb(0, 255, 0);
+                if (quoRight == false)
+                {
+                    simpleSound.Play();
+                    quoRight = true;
+                }
                 totalRight++;
             }
 
@@ -127,6 +153,8 @@ namespace TimedMathQuiz
                 timeLabel.Text = timeLeft + " seconds";
                 if(timeLeft < 6 && timeLeft > 0)
                 {
+                    SoundPlayer simpleSound = new SoundPlayer(@"C:/Windows/Media/Windows Error.wav");
+                    simpleSound.Play();
                     timeLabel.BackColor = Color.FromArgb(255, 0, 0);
                 }
             }
@@ -158,8 +186,10 @@ namespace TimedMathQuiz
 
                     product.BackColor = Color.FromArgb(255, 0, 0);
                 }
+                SoundPlayer simpleSound = new SoundPlayer(@"C:\Users\mtyra\Desktop\CIT 365\Assignment 2\TimedMathQuiz\TimedMathQuiz/fail-buzzer-03.wav");
+                simpleSound.Play();
                 MessageBox.Show("You didn't finish in time. You only got: "+answersBefore+" answers right", "Sorry!");
-
+                
                 startButton.Enabled = true;
             }
         }
